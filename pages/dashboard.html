@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inova Odonto OS — Sistema de Gestão Odontológica & Painel Clínico 3D</title>
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦷</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body class="dashboard-body">
+
+  <!-- ==========================================================================
+       SIDEBAR FUTURISTA RETRÁTIL
+       ========================================================================== -->
+  <aside class="app-sidebar">
+    <div class="sidebar-header">
+      <a href="../index.html" class="sidebar-brand">
+        <div class="sidebar-brand-icon">
+          <i class="fas fa-tooth"></i>
+        </div>
+        <div class="sidebar-brand-text">
+          <div class="sidebar-brand-title">INOVA <span>ODONTO</span></div>
+          <div class="sidebar-brand-badge">SISTEMA CLÍNICO v2.4</div>
+        </div>
+      </a>
+      <button class="sidebar-toggle-btn" aria-label="Recolher ou expandir menu lateral">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+    </div>
+
+    <!-- Navegação por Módulos -->
+    <nav class="sidebar-nav">
+      <div class="nav-section-title">Visão Geral</div>
+      
+      <a class="sidebar-item active" data-module="dashboard" title="Dashboard Principal">
+        <i class="fas fa-chart-pie"></i>
+        <span class="sidebar-text">Dashboard Principal</span>
+      </a>
+
+      <div class="nav-section-title">Atendimento Clínico</div>
+
+      <a class="sidebar-item" data-module="pacientes" title="Gestão de Pacientes">
+        <i class="fas fa-user-injured"></i>
+        <span class="sidebar-text">Gestão de Pacientes</span>
+        <span class="sidebar-badge">1.842</span>
+      </a>
+
+      <a class="sidebar-item" data-module="prontuario" title="Prontuário & Odontograma 3D">
+        <i class="fas fa-teeth"></i>
+        <span class="sidebar-text">Prontuário & Odontograma</span>
+      </a>
+
+      <a class="sidebar-item" data-module="agenda" title="Agenda de Consultas">
+        <i class="fas fa-calendar-alt"></i>
+        <span class="sidebar-text">Agenda de Consultas</span>
+        <span class="sidebar-badge" style="background:#25D366;">18</span>
+      </a>
+
+      <div class="nav-section-title">Equipe & Procedimentos</div>
+
+      <a class="sidebar-item" data-module="dentistas" title="Corpo Clínico & Dentistas">
+        <i class="fas fa-user-md"></i>
+        <span class="sidebar-text">Dentistas & Escalas</span>
+      </a>
+
+      <a class="sidebar-item" data-module="procedimentos" title="Tabela de Procedimentos">
+        <i class="fas fa-stethoscope"></i>
+        <span class="sidebar-text">Procedimentos & Tabela</span>
+      </a>
+
+      <div class="nav-section-title">Administrativo</div>
+
+      <a class="sidebar-item" data-module="financeiro" title="Gestão Financeira & Caixa">
+        <i class="fas fa-wallet"></i>
+        <span class="sidebar-text">Gestão Financeira</span>
+      </a>
+
+      <a class="sidebar-item" data-module="relatorios" title="Relatórios & Performance">
+        <i class="fas fa-file-invoice-dollar"></i>
+        <span class="sidebar-text">Relatórios & BI</span>
+      </a>
+
+      <a class="sidebar-item" data-module="configuracoes" title="Configurações da Clínica">
+        <i class="fas fa-sliders-h"></i>
+        <span class="sidebar-text">Configurações</span>
+      </a>
+
+      <div style="margin-top: auto; padding-top: 14px;">
+        <a href="../index.html" class="sidebar-item" style="color: var(--color-gray-muted); border: 1px dashed rgba(255,255,255,0.1);">
+          <i class="fas fa-globe"></i>
+          <span class="sidebar-text">Portal Público</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Rodapé com Identificação do Operador -->
+    <div class="sidebar-footer">
+      <div class="operator-profile">
+        <div class="operator-avatar">DQ</div>
+        <div class="operator-info">
+          <div class="operator-name">Dra. Dayana Queiroga</div>
+          <div class="operator-role">Diretora / CRO-PB 6842</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       CONTEÚDO PRINCIPAL (APP MAIN)
+       ========================================================================== -->
+  <main class="app-main">
+    
+    <!-- Topbar do Sistema -->
+    <header class="app-topbar">
+      <div class="topbar-left">
+        <button class="mobile-dashboard-toggle sidebar-toggle-btn" aria-label="Abrir menu">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="global-search">
+          <i class="fas fa-search"></i>
+          <input type="text" id="global-search-input" placeholder="Buscar paciente, CPF ou prontuário...">
+        </div>
+
+        <div class="clinic-location-badge">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Unidade Sousa - PB (Centro)</span>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <button class="btn btn-primary" id="btn-add-patient" style="padding: 9px 18px; font-size: 0.85rem;">
+          <i class="fas fa-user-plus"></i>
+          <span>+ Novo Paciente</span>
+        </button>
+
+        <div class="topbar-icon-btn" title="Notificações do Sistema">
+          <i class="fas fa-bell"></i>
+          <span class="notify-dot"></span>
+        </div>
+
+        <div class="topbar-icon-btn" title="Sincronizado na Nuvem">
+          <i class="fas fa-cloud" style="color:#25D366;"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- ÁREA DE MÓDULOS DO SISTEMA -->
+    <div class="app-content">
+
+      <!-- ====================================================================
+           MÓDULO 1: DASHBOARD PRINCIPAL (DEFAULT ACTIVE)
+           ==================================================================== -->
+      <section class="module-container active" id="module-dashboard">
+        
+        <div class="module-header">
+          <div class="module-title">
+            <h2>Visão Geral da Clínica • Painel Executivo</h2>
+            <p>Métricas consolidadas em tempo real — Unidade Inova Odonto Sousa/PB</p>
+          </div>
+
+          <div style="display: flex; gap: 12px;">
+            <div class="footer-status-pill">
+              <span class="status-dot"></span>
+              <span>18 Consultas Hoje</span>
+            </div>
+            <div class="footer-status-pill" style="color:#00E5FF; border-color:rgba(0,229,255,0.3); background:rgba(0,229,255,0.1);">
+              <i class="fas fa-shield-alt"></i>
+              <span>Backup Cloud OK</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Cards 3D de Indicadores (KPIs) -->
+        <div class="kpi-grid">
+          
+          <!-- KPI 1: Pacientes Cadastrados -->
+          <div class="kpi-card-3d">
+            <div class="kpi-top">
+              <div class="kpi-icon"><i class="fas fa-users"></i></div>
+              <div class="kpi-trend positive"><i class="fas fa-arrow-up"></i> +12%</div>
+            </div>
+            <div class="kpi-value">1.842</div>
+            <div class="kpi-label">Total de Pacientes Cadastrados</div>
+          </div>
+
+          <!-- KPI 2: Consultas Agendadas Hoje -->
+          <div class="kpi-card-3d">
+            <div class="kpi-top">
+              <div class="kpi-icon"><i class="fas fa-calendar-check"></i></div>
+              <div class="kpi-trend positive"><i class="fas fa-check"></i> 11 Concluídas</div>
+            </div>
+            <div class="kpi-value">18 <span style="font-size:1.1rem; color:var(--color-gray-muted);">/ 5 pendentes</span></div>
+            <div class="kpi-label">Consultas Agendadas Hoje</div>
+          </div>
+
+          <!-- KPI 3: Faturamento do Mês -->
+          <div class="kpi-card-3d">
+            <div class="kpi-top">
+              <div class="kpi-icon"><i class="fas fa-chart-line"></i></div>
+              <div class="kpi-trend positive"><i class="fas fa-arrow-up"></i> +18.4%</div>
+            </div>
+            <div class="kpi-value">R$ 148.650</div>
+            <div class="kpi-label">Faturamento Mensal Consolidado</div>
+          </div>
+
+          <!-- KPI 4: Taxa de Ocupação dos Consultórios -->
+          <div class="kpi-card-3d">
+            <div class="kpi-top">
+              <div class="kpi-icon"><i class="fas fa-door-open"></i></div>
+              <div class="kpi-trend positive"><i class="fas fa-bolt"></i> Alta Demanda</div>
+            </div>
+            <div class="kpi-value">94.2%</div>
+            <div class="kpi-label">Ocupação das Salas Clínicas</div>
+          </div>
+
+        </div>
+
+        <!-- Gráficos de Evolução e Procedimentos com Chart.js -->
+        <div class="charts-row">
+          
+          <div class="chart-card-3d">
+            <div class="chart-header">
+              <div class="chart-title">
+                <i class="fas fa-wave-square text-gradient-red"></i>
+                Evolução Mensal do Faturamento & Procedimentos (2026)
+              </div>
+              <span class="eyebrow-badge" style="margin-bottom:0; font-size:0.7rem;">META MENSAL SUPERADA</span>
+            </div>
+            <div class="chart-container-inner">
+              <canvas id="chart-revenue-evolution"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card-3d">
+            <div class="chart-header">
+              <div class="chart-title">
+                <i class="fas fa-chart-pie text-gradient-red"></i>
+                Distribuição de Procedimentos
+              </div>
+            </div>
+            <div class="chart-container-inner">
+              <canvas id="chart-procedures-donut"></canvas>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Tabela de Próximas Consultas & Feed de Atividades -->
+        <div class="dashboard-tables-row">
+          
+          <div class="table-card-3d">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
+              <h3 style="font-size:1.15rem; color:#FFF; display:flex; align-items:center; gap:8px;">
+                <i class="fas fa-clock text-gradient-red"></i>
+                Próximas Consultas do Dia
+              </h3>
+              <a class="btn btn-secondary sidebar-item" data-module="agenda" style="padding:4px 10px; font-size:0.75rem;">
+                Ver Agenda Completa
+              </a>
+            </div>
+
+            <table class="tech-table">
+              <thead>
+                <tr>
+                  <th>Horário</th>
+                  <th>Paciente</th>
+                  <th>Profissional</th>
+                  <th>Procedimento</th>
+                  <th>Status</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-family:var(--font-mono); font-weight:700; color:#FFF;">09:00</td>
+                  <td><strong>Mariana Sousa Queiroga</strong></td>
+                  <td>Dra. Dayana</td>
+                  <td>Harmonização Labial</td>
+                  <td><span class="status-badge in-progress"><i class="fas fa-spinner fa-spin"></i> Em Atendimento</span></td>
+                  <td>
+                    <button class="topbar-icon-btn" style="width:28px; height:28px; font-size:0.75rem;" title="Abrir Prontuário" onclick="showToast('Abrindo prontuário de Mariana S.', 'info')">
+                      <i class="fas fa-folder-open"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="font-family:var(--font-mono); font-weight:700; color:#FFF;">10:30</td>
+                  <td><strong>Carlos Eduardo Gadelha</strong></td>
+                  <td>Dr. Rafael</td>
+                  <td>Cirurgia Guiada Implante</td>
+                  <td><span class="status-badge confirmed"><i class="fas fa-check"></i> Confirmado</span></td>
+                  <td>
+                    <button class="topbar-icon-btn" style="width:28px; height:28px; font-size:0.75rem;" title="Notificar via WhatsApp" onclick="showToast('Notificação WhatsApp enviada para Carlos E.', 'success')">
+                      <i class="fab fa-whatsapp"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="font-family:var(--font-mono); font-weight:700; color:#FFF;">11:45</td>
+                  <td><strong>Beatriz Lima Fernandes</strong></td>
+                  <td>Dr. Lucas</td>
+                  <td>Alinhadores - Entrega 3D</td>
+                  <td><span class="status-badge waiting"><i class="fas fa-hourglass-half"></i> Aguardando</span></td>
+                  <td>
+                    <button class="topbar-icon-btn" style="width:28px; height:28px; font-size:0.75rem;" title="Chamar na Recepção" onclick="showToast('Chamada disparada no painel de recepção', 'info')">
+                      <i class="fas fa-bullhorn"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="font-family:var(--font-mono); font-weight:700; color:#FFF;">14:00</td>
+                  <td><strong>Rodrigo Pires de Abrantes</strong></td>
+                  <td>Dra. Camilla</td>
+                  <td>Canal Dente 16 (Sessão Única)</td>
+                  <td><span class="status-badge confirmed"><i class="fas fa-check"></i> Confirmado</span></td>
+                  <td>
+                    <button class="topbar-icon-btn" style="width:28px; height:28px; font-size:0.75rem;" title="Ver Exames" onclick="showToast('Tomografia 3D carregada', 'info')">
+                      <i class="fas fa-x-ray"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="font-family:var(--font-mono); font-weight:700; color:#FFF;">15:30</td>
+                  <td><strong>Fernanda Alencar</strong></td>
+                  <td>Dra. Dayana</td>
+                  <td>Lentes de Contato (Mock-up)</td>
+                  <td><span class="status-badge confirmed"><i class="fas fa-check"></i> Confirmado</span></td>
+                  <td>
+                    <button class="topbar-icon-btn" style="width:28px; height:28px; font-size:0.75rem;" title="Simulação 3D" onclick="showToast('DSD Mock-up 3D pronto', 'info')">
+                      <i class="fas fa-cube"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Feed de Atividades Recentes -->
+          <div class="table-card-3d">
+            <h3 style="font-size:1.15rem; color:#FFF; margin-bottom:18px; display:flex; align-items:center; gap:8px;">
+              <i class="fas fa-rss text-gradient-red"></i>
+              Feed de Atividades da Clínica
+            </h3>
+
+            <div class="activity-feed-list">
+              <div class="activity-item">
+                <div class="activity-icon"><i class="fas fa-check"></i></div>
+                <div class="activity-text">
+                  <h5>Orçamento Aprovado • R$ 14.200,00</h5>
+                  <p>Paciente: Mariana Sousa • Protocolo Lentes Cerâmicas (Dra. Dayana)</p>
+                  <span style="font-size:0.7rem; color:var(--color-primary-intense);">Há 12 minutos</span>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-icon" style="color:#00E5FF; background:rgba(0,229,255,0.15);"><i class="fas fa-cube"></i></div>
+                <div class="activity-text">
+                  <h5>Escaneamento 3D Concluído</h5>
+                  <p>Arquivo STL exportado para laboratório protético de alinhadores.</p>
+                  <span style="font-size:0.7rem; color:var(--color-gray-muted);">Há 45 minutos</span>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-icon" style="color:#25D366; background:rgba(37,211,102,0.15);"><i class="fas fa-user-plus"></i></div>
+                <div class="activity-text">
+                  <h5>Novo Paciente Cadastrado</h5>
+                  <p>Carlos Eduardo Gadelha via integração do WhatsApp institucional.</p>
+                  <span style="font-size:0.7rem; color:var(--color-gray-muted);">Há 2 horas</span>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-icon"><i class="fas fa-file-invoice"></i></div>
+                <div class="activity-text">
+                  <h5>Pagamento PIX Confirmado • R$ 1.850,00</h5>
+                  <p>Procedimento: Clareamento a Laser LED em sessão clínica.</p>
+                  <span style="font-size:0.7rem; color:var(--color-gray-muted);">Hoje às 08:35</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ====================================================================
+           MÓDULO 2: GESTÃO DE PACIENTES
+           ==================================================================== -->
+      <section class="module-container" id="module-pacientes">
+        <div class="module-header">
+          <div class="module-title">
+            <h2>Gestão de Pacientes • Base Cadastral</h2>
+            <p>Histórico médico, anamnese digital e prontuários odontológicos ativos</p>
+          </div>
+          <button class="btn btn-primary" onclick="document.getElementById('modal-add-patient').classList.add('active');">
+            <i class="fas fa-user-plus"></i>
+            <span>Cadastrar Novo Paciente</span>
+          </button>
+        </div>
+
+        <div class="card-3d" style="padding: 24px; margin-bottom: 24px;">
+          <div style="display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+            <div class="global-search" style="width: 380px;">
+              <i class="fas fa-search"></i>
+              <input type="text" id="search-patients-input" placeholder="Filtrar por nome, CPF ou WhatsApp...">
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+              <button class="btn btn-secondary" style="padding: 8px 14px; font-size: 0.8rem;">Todos (1.842)</button>
+              <button class="btn btn-secondary" style="padding: 8px 14px; font-size: 0.8rem;">Em Tratamento (214)</button>
+              <button class="btn btn-secondary" style="padding: 8px 14px; font-size: 0.8rem;">Em Manutenção (85)</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-card-3d">
+          <table class="tech-table">
+            <thead>
+              <tr>
+                <th>Prontuário</th>
+                <th>Nome do Paciente</th>
+                <th>CPF</th>
+                <th>WhatsApp</th>
+                <th>Última Consulta</th>
+                <th>Dentista Resp.</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="patient-row">
+                <td style="font-family:var(--font-mono); color:var(--color-primary-intense); font-weight:700;">#INO-1048</td>
+                <td class="patient-name"><strong>Mariana Sousa Queiroga</strong></td>
+                <td class="patient-doc">045.***.***-82</td>
+                <td>(83) 99812-4411</td>
+                <td>Hoje (09:00)</td>
+                <td>Dra. Dayana</td>
+                <td><span class="status-badge in-progress">Em Tratamento</span></td>
+                <td>
+                  <button class="btn btn-secondary" style="padding:4px 8px; font-size:0.75rem;" onclick="showToast('Prontuário #INO-1048 aberto', 'info')">
+                    Ver Ficha
+                  </button>
+                </td>
+              </tr>
+              <tr class="patient-row">
+                <td style="font-family:var(--font-mono); color:var(--color-primary-intense); font-weight:700;">#INO-1047</td>
+                <td class="patient-name"><strong>Carlos Eduardo Gadelha</strong></td>
+                <td class="patient-doc">078.***.***-34</td>
+                <td>(83) 99654-1288</td>
+                <td>10/11/2026</td>
+                <td>Dr. Rafael</td>
+                <td><span class="status-badge confirmed">Apto Cirurgia</span></td>
+                <td>
+                  <button class="btn btn-secondary" style="padding:4px 8px; font-size:0.75rem;" onclick="showToast('Prontuário #INO-1047 aberto', 'info')">
+                    Ver Ficha
+                  </button>
+                </td>
+              </tr>
+              <tr class="patient-row">
+                <td style="font-family:var(--font-mono); color:var(--color-primary-intense); font-weight:700;">#INO-1046</td>
+                <td class="patient-name"><strong>Beatriz Lima Fernandes</strong></td>
+                <td class="patient-doc">032.***.***-99</td>
+                <td>(83) 99933-7821</td>
+                <td>04/11/2026</td>
+                <td>Dr. Lucas</td>
+                <td><span class="status-badge confirmed">Alinhadores #4</span></td>
+                <td>
+                  <button class="btn btn-secondary" style="padding:4px 8px; font-size:0.75rem;" onclick="showToast('Prontuário #INO-1046 aberto', 'info')">
+                    Ver Ficha
+                  </button>
+                </td>
+              </tr>
+              <tr class="patient-row">
+                <td style="font-family:var(--font-mono); color:var(--color-primary-intense); font-weight:700;">#INO-1045</td>
+                <td class="patient-name"><strong>Rodrigo Pires de Abrantes</strong></td>
+                <td class="patient-doc">012.***.***-67</td>
+                <td>(83) 99877-0914</td>
+                <td>28/10/2026</td>
+                <td>Dra. Camilla</td>
+                <td><span class="status-badge waiting">Retorno Canal</span></td>
+                <td>
+                  <button class="btn btn-secondary" style="padding:4px 8px; font-size:0.75rem;" onclick="showToast('Prontuário #INO-1045 aberto', 'info')">
+                    Ver Ficha
+                  </button>
+                </td>
+              </tr>
+              <tr class="patient-row">
+                <td style="font-family:var(--font-mono); color:var(--color-primary-intense); font-weight:700;">#INO-1044</td>
+                <td class="patient-name"><strong>Fernanda Alencar</strong></td>
+                <td class="patient-doc">091.***.***-20</td>
+                <td>(83) 99611-3040</td>
+                <td>15/10/2026</td>
+                <td>Dra. Dayana</td>
+                <td><span class="status-badge in-progress">Mock-up 3D</span></td>
+                <td>
+                  <button class="btn btn-secondary" style="padding:4px 8px; font-size:0.75rem;" onclick="showToast('Prontuário #INO-1044 aberto', 'info')">
+                    Ver Ficha
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           MÓDULO 3: PRONTUÁRIO & ODONTOGRAMA INTERATIVO 3D
+           ==================================================================== -->
+      <section class="module-container" id="module-prontuario">
+        <div class="module-header">
+          <div class="module-title">
+            <h2>Odontograma Digital Interativo 3D</h2>
+            <p>Mapeamento visual da arcada dentária (Dentes 18 a 48) com registro clínico dinâmico</p>
+          </div>
+          <button class="btn btn-secondary" onclick="showToast('Odontograma salvo e sincronizado na nuvem', 'success')">
+            <i class="fas fa-save"></i>
+            <span>Salvar Alterações</span>
+          </button>
+        </div>
+
+        <div class="odontogram-section">
+          <!-- Toolbar de Condições -->
+          <div class="odontogram-toolbar">
+            <div style="font-size:0.9rem; font-weight:700; color:#FFF; display:flex; align-items:center; gap:8px;">
+              <i class="fas fa-palette text-gradient-red"></i>
+              Selecione o Procedimento para Aplicar no Dente:
+            </div>
+
+            <div class="condition-selectors">
+              <button class="condition-btn active" data-condition="carie">
+                <span class="color-indicator" style="background:#E50932;"></span>
+                <span>Cárie / Restauração</span>
+              </button>
+              <button class="condition-btn" data-condition="lente">
+                <span class="color-indicator" style="background:#00E5FF;"></span>
+                <span>Lente em Cerâmica</span>
+              </button>
+              <button class="condition-btn" data-condition="implante">
+                <span class="color-indicator" style="background:#FFB300;"></span>
+                <span>Implante Dentário</span>
+              </button>
+              <button class="condition-btn" data-condition="canal">
+                <span class="color-indicator" style="background:#9D00FF;"></span>
+                <span>Canal / Endodontia</span>
+              </button>
+              <button class="condition-btn" data-condition="higido">
+                <span class="color-indicator" style="background:#FFFFFF;"></span>
+                <span>Dente Hígido</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Mapeamento Visual da Arcada -->
+          <div class="odontogram-arc-container">
+            
+            <!-- Arcada Superior -->
+            <div class="arc-label">Arcada Superior (Maxila)</div>
+            <div class="teeth-row">
+              <!-- Quadrante 1 (18 a 11) -->
+              <div class="tooth-box" data-tooth="18" data-status="higido"><span class="tooth-num">18</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 2C8 2 6 5 6 9c0 5 3 13 6 13s6-8 6-13c0-4-2-7-6-7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="17" data-status="higido"><span class="tooth-num">17</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 2C8 2 6 5 6 9c0 5 3 13 6 13s6-8 6-13c0-4-2-7-6-7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="16" data-status="canal"><span class="tooth-num">16</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 2C8 2 6 5 6 9c0 5 3 13 6 13s6-8 6-13c0-4-2-7-6-7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="15" data-status="higido"><span class="tooth-num">15</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 2C8 2 6 5 6 9c0 5 3 13 6 13s6-8 6-13c0-4-2-7-6-7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="14" data-status="higido"><span class="tooth-num">14</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 2C8 2 6 5 6 9c0 5 3 13 6 13s6-8 6-13c0-4-2-7-6-7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="13" data-status="lente"><span class="tooth-num">13</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 2C8 2 6 5 6 9c0 5 3 13 6 13s6-8 6-13c0-4-2-7-6-7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="12" data-status="lente"><span class="tooth-num">12</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 2C8 2 6 5 6 9c0 5 3 13 6 13s6-8 6-13c0-4-2-7-6-7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box selected" data-tooth="11" data-status="lente"><span class="tooth-num">11</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 2C8 2 6 5 6 9c0 5 3 13 6 13s6-8 6-13c0-4-2-7-6-7z"/></svg><span class="tooth-status-dot"></span></div>
+
+              <!-- Quadrante 2 (21 a 28) -->
+              <div class="tooth-box" data-tooth="21" data-status="lente"><span class="tooth-num">21</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 2C8 2 6 5 6 9c0 5 3 13 6 13s6-8 6-13c0-4-2-7-6-7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="22" data-status="lente"><span class="tooth-num">22</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 2C8 2 6 5 6 9c0 5 3 13 6 13s6-8 6-13c0-4-2-7-6-7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="23" data-status="lente"><span class="tooth-num">23</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 2C8 2 6 5 6 9c0 5 3 13 6 13s6-8 6-13c0-4-2-7-6-7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="24" data-status="higido"><span class="tooth-num">24</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 2C8 2 6 5 6 9c0 5 3 13 6 13s6-8 6-13c0-4-2-7-6-7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="25" data-status="carie"><span class="tooth-num">25</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 2C8 2 6 5 6 9c0 5 3 13 6 13s6-8 6-13c0-4-2-7-6-7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="26" data-status="higido"><span class="tooth-num">26</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 2C8 2 6 5 6 9c0 5 3 13 6 13s6-8 6-13c0-4-2-7-6-7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="27" data-status="higido"><span class="tooth-num">27</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 2C8 2 6 5 6 9c0 5 3 13 6 13s6-8 6-13c0-4-2-7-6-7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="28" data-status="higido"><span class="tooth-num">28</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 2C8 2 6 5 6 9c0 5 3 13 6 13s6-8 6-13c0-4-2-7-6-7z"/></svg><span class="tooth-status-dot"></span></div>
+            </div>
+
+            <!-- Arcada Inferior -->
+            <div class="arc-label">Arcada Inferior (Mandíbula)</div>
+            <div class="teeth-row">
+              <!-- Quadrante 4 (48 a 41) -->
+              <div class="tooth-box" data-tooth="48" data-status="higido"><span class="tooth-num">48</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 22C8 22 6 19 6 15c0-5 3-13 6-13s6 8 6 13c0 4-2 7-6 7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="47" data-status="higido"><span class="tooth-num">47</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 22C8 22 6 19 6 15c0-5 3-13 6-13s6 8 6 13c0 4-2 7-6 7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="46" data-status="implante"><span class="tooth-num">46</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 22C8 22 6 19 6 15c0-5 3-13 6-13s6 8 6 13c0 4-2 7-6 7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="45" data-status="higido"><span class="tooth-num">45</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 22C8 22 6 19 6 15c0-5 3-13 6-13s6 8 6 13c0 4-2 7-6 7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="44" data-status="higido"><span class="tooth-num">44</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 22C8 22 6 19 6 15c0-5 3-13 6-13s6 8 6 13c0 4-2 7-6 7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="43" data-status="higido"><span class="tooth-num">43</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 22C8 22 6 19 6 15c0-5 3-13 6-13s6 8 6 13c0 4-2 7-6 7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="42" data-status="higido"><span class="tooth-num">42</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 22C8 22 6 19 6 15c0-5 3-13 6-13s6 8 6 13c0 4-2 7-6 7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="41" data-status="higido"><span class="tooth-num">41</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 22C8 22 6 19 6 15c0-5 3-13 6-13s6 8 6 13c0 4-2 7-6 7z"/></svg><span class="tooth-status-dot"></span></div>
+
+              <!-- Quadrante 3 (31 a 38) -->
+              <div class="tooth-box" data-tooth="31" data-status="higido"><span class="tooth-num">31</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 22C8 22 6 19 6 15c0-5 3-13 6-13s6 8 6 13c0 4-2 7-6 7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="32" data-status="higido"><span class="tooth-num">32</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 22C8 22 6 19 6 15c0-5 3-13 6-13s6 8 6 13c0 4-2 7-6 7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="33" data-status="higido"><span class="tooth-num">33</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 22C8 22 6 19 6 15c0-5 3-13 6-13s6 8 6 13c0 4-2 7-6 7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="34" data-status="higido"><span class="tooth-num">34</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 22C8 22 6 19 6 15c0-5 3-13 6-13s6 8 6 13c0 4-2 7-6 7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="35" data-status="higido"><span class="tooth-num">35</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 22C8 22 6 19 6 15c0-5 3-13 6-13s6 8 6 13c0 4-2 7-6 7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="36" data-status="higido"><span class="tooth-num">36</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 22C8 22 6 19 6 15c0-5 3-13 6-13s6 8 6 13c0 4-2 7-6 7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="37" data-status="higido"><span class="tooth-num">37</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 22C8 22 6 19 6 15c0-5 3-13 6-13s6 8 6 13c0 4-2 7-6 7z"/></svg><span class="tooth-status-dot"></span></div>
+              <div class="tooth-box" data-tooth="38" data-status="higido"><span class="tooth-num">38</span><svg class="tooth-graphic" viewBox="0 0 24 24"><path d="M12 22C8 22 6 19 6 15c0-5 3-13 6-13s6 8 6 13c0 4-2 7-6 7z"/></svg><span class="tooth-status-dot"></span></div>
+            </div>
+
+          </div>
+
+          <!-- Inspetor de Dente & Histórico de Modificações -->
+          <div class="odontogram-inspector-card">
+            <div>
+              <div style="font-size:0.75rem; text-transform:uppercase; color:var(--color-primary-intense); font-family:var(--font-mono);">
+                DENTE SELECIONADO
+              </div>
+              <h4 id="selected-tooth-num" style="font-size:1.3rem; color:#FFF;">Dente #11</h4>
+              <p id="selected-tooth-status" style="font-size:0.85rem; color:#00E5FF;">Lente de Contato em Porcelana</p>
+            </div>
+
+            <div style="flex:1; max-width:480px;">
+              <div style="font-size:0.75rem; text-transform:uppercase; color:var(--color-gray-muted); font-family:var(--font-mono); margin-bottom:6px;">
+                HISTÓRICO RECENTE DO PRONTUÁRIO
+              </div>
+              <ul id="odontogram-actions-log" style="list-style:none; max-height:80px; overflow-y:auto;">
+                <li style="font-size:0.8rem; color:#B8B8C5;"><span style="color:#FF1744; font-weight:700;">Dente #16:</span> Tratamento de canal finalizado por Dra. Camilla.</li>
+                <li style="font-size:0.8rem; color:#B8B8C5;"><span style="color:#00E5FF; font-weight:700;">Dentes 11 a 23:</span> Lentes cimentadas com sucesso por Dra. Dayana.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           MÓDULO 4: AGENDA DE CONSULTAS
+           ==================================================================== -->
+      <section class="module-container" id="module-agenda">
+        <div class="module-header">
+          <div class="module-title">
+            <h2>Agenda Clínica Inteligente</h2>
+            <p>Escala horária dos consultórios da Inova Odonto em Sousa - PB</p>
+          </div>
+          <div style="display:flex; gap:12px;">
+            <button class="btn btn-secondary" style="padding:8px 16px; font-size:0.85rem;" onclick="showToast('Exportando agenda do dia em PDF', 'info')">
+              <i class="fas fa-print"></i> Imprimir Escala
+            </button>
+            <button class="btn btn-primary" style="padding:8px 16px; font-size:0.85rem;" onclick="showToast('Agendamento express acionado', 'info')">
+              <i class="fas fa-plus"></i> Novo Agendamento
+            </button>
+          </div>
+        </div>
+
+        <div class="calendar-grid-card">
+          <div class="calendar-topbar">
+            <div style="display:flex; align-items:center; gap:16px;">
+              <h3 style="font-size:1.3rem; color:#FFF;">Hoje, 11 de Novembro de 2026</h3>
+              <span class="footer-status-pill"><span class="status-dot"></span> 18 Agendados</span>
+            </div>
+
+            <div class="calendar-nav-buttons">
+              <button class="btn btn-secondary" style="padding:6px 12px; font-size:0.8rem;"><i class="fas fa-chevron-left"></i></button>
+              <button class="btn btn-secondary" style="padding:6px 14px; font-size:0.8rem;">Hoje</button>
+              <button class="btn btn-secondary" style="padding:6px 12px; font-size:0.8rem;"><i class="fas fa-chevron-right"></i></button>
+            </div>
+          </div>
+
+          <!-- Grade Diária de Horários -->
+          <div class="agenda-day-grid">
+            <div class="time-slot-label">08:00</div>
+            <div class="time-slot-content">
+              <div class="appointment-chip" data-patient="Joana Dark" data-time="08:00" data-procedure="Check-up">
+                <div>
+                  <strong>Joana Dark de Queiroga</strong> • Profilaxia e Raspagem
+                </div>
+                <div style="font-size:0.8rem; color:#25D366;"><i class="fas fa-check-circle"></i> Realizada</div>
+              </div>
+            </div>
+
+            <div class="time-slot-label">09:00</div>
+            <div class="time-slot-content">
+              <div class="appointment-chip" data-patient="Mariana Sousa" data-time="09:00" data-procedure="Harmonização" style="border-left-color:#FF1744; background:rgba(229,9,50,0.25);">
+                <div>
+                  <strong>Mariana Sousa Queiroga</strong> • Harmonização Labial (Dra. Dayana)
+                </div>
+                <div style="font-size:0.8rem; color:var(--color-primary-intense);"><i class="fas fa-spinner fa-spin"></i> Em Atendimento</div>
+              </div>
+            </div>
+
+            <div class="time-slot-label">10:30</div>
+            <div class="time-slot-content">
+              <div class="appointment-chip" data-patient="Carlos Eduardo" data-time="10:30" data-procedure="Implante">
+                <div>
+                  <strong>Carlos Eduardo Gadelha</strong> • Cirurgia Guiada Implante (Dr. Rafael)
+                </div>
+                <div style="font-size:0.8rem; color:#00E5FF;"><i class="fas fa-clock"></i> Confirmado</div>
+              </div>
+            </div>
+
+            <div class="time-slot-label">11:45</div>
+            <div class="time-slot-content">
+              <div class="appointment-chip" data-patient="Beatriz Lima" data-time="11:45" data-procedure="Alinhadores">
+                <div>
+                  <strong>Beatriz Lima Fernandes</strong> • Alinhadores Invisíveis #4 (Dr. Lucas)
+                </div>
+                <div style="font-size:0.8rem; color:#FFB300;"><i class="fas fa-user-clock"></i> Na Recepção</div>
+              </div>
+            </div>
+
+            <div class="time-slot-label">14:00</div>
+            <div class="time-slot-content">
+              <div class="appointment-chip" data-patient="Rodrigo Pires" data-time="14:00" data-procedure="Canal">
+                <div>
+                  <strong>Rodrigo Pires de Abrantes</strong> • Endodontia Dente 16 (Dra. Camilla)
+                </div>
+                <div style="font-size:0.8rem; color:#00E5FF;"><i class="fas fa-clock"></i> Confirmado</div>
+              </div>
+            </div>
+
+            <div class="time-slot-label">15:30</div>
+            <div class="time-slot-content">
+              <div class="appointment-chip" data-patient="Fernanda Alencar" data-time="15:30" data-procedure="Lentes">
+                <div>
+                  <strong>Fernanda Alencar</strong> • Lentes de Contato (Mock-up)
+                </div>
+                <div style="font-size:0.8rem; color:#00E5FF;"><i class="fas fa-clock"></i> Confirmado</div>
+              </div>
+            </div>
+
+            <div class="time-slot-label">17:00</div>
+            <div class="time-slot-content">
+              <div style="font-size:0.85rem; color:var(--color-gray-muted); font-style:italic;">
+                Horário vago para urgências ou novo agendamento.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           MÓDULO 5: DENTISTAS & ESCALAS
+           ==================================================================== -->
+      <section class="module-container" id="module-dentistas">
+        <div class="module-header">
+          <div class="module-title">
+            <h2>Corpo Clínico & Desempenho dos Profissionais</h2>
+            <p>Escala de plantão, ocupação de agenda e métricas de satisfação</p>
+          </div>
+        </div>
+
+        <div class="team-grid" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="kpi-card-3d">
+            <h3 style="font-size:1.15rem; color:#FFF; margin-bottom:4px;">Dra. Dayana Queiroga</h3>
+            <p style="font-size:0.75rem; color:var(--color-primary-intense); margin-bottom:16px;">CRO-PB 6842 • Harmonização</p>
+            <div style="display:flex; flex-direction:column; gap:8px; font-size:0.85rem;">
+              <div style="display:flex; justify-content:space-between;"><span>Consultas/Mês:</span> <strong>94</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Ocupação:</span> <strong style="color:#25D366;">98%</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Avaliação:</span> <strong>5.0 ★</strong></div>
+            </div>
+          </div>
+
+          <div class="kpi-card-3d">
+            <h3 style="font-size:1.15rem; color:#FFF; margin-bottom:4px;">Dr. Lucas Queiroga</h3>
+            <p style="font-size:0.75rem; color:var(--color-primary-intense); margin-bottom:16px;">CRO-PB 7215 • Ortodontia</p>
+            <div style="display:flex; flex-direction:column; gap:8px; font-size:0.85rem;">
+              <div style="display:flex; justify-content:space-between;"><span>Consultas/Mês:</span> <strong>82</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Ocupação:</span> <strong style="color:#25D366;">92%</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Avaliação:</span> <strong>4.9 ★</strong></div>
+            </div>
+          </div>
+
+          <div class="kpi-card-3d">
+            <h3 style="font-size:1.15rem; color:#FFF; margin-bottom:4px;">Dra. Camilla Silveira</h3>
+            <p style="font-size:0.75rem; color:var(--color-primary-intense); margin-bottom:16px;">CRO-PB 7590 • Endodontia</p>
+            <div style="display:flex; flex-direction:column; gap:8px; font-size:0.85rem;">
+              <div style="display:flex; justify-content:space-between;"><span>Consultas/Mês:</span> <strong>76</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Ocupação:</span> <strong style="color:#25D366;">90%</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Avaliação:</span> <strong>5.0 ★</strong></div>
+            </div>
+          </div>
+
+          <div class="kpi-card-3d">
+            <h3 style="font-size:1.15rem; color:#FFF; margin-bottom:4px;">Dr. Rafael Dantas</h3>
+            <p style="font-size:0.75rem; color:var(--color-primary-intense); margin-bottom:16px;">CRO-PB 8041 • Implantes</p>
+            <div style="display:flex; flex-direction:column; gap:8px; font-size:0.85rem;">
+              <div style="display:flex; justify-content:space-between;"><span>Consultas/Mês:</span> <strong>68</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Ocupação:</span> <strong style="color:#25D366;">88%</strong></div>
+              <div style="display:flex; justify-content:space-between;"><span>Avaliação:</span> <strong>4.9 ★</strong></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           MÓDULO 6: PROCEDIMENTOS & TABELA
+           ==================================================================== -->
+      <section class="module-container" id="module-procedimentos">
+        <div class="module-header">
+          <div class="module-title">
+            <h2>Tabela de Procedimentos Clínicos</h2>
+            <p>Parâmetros operacionais e valores de referência para orçamentos</p>
+          </div>
+        </div>
+
+        <div class="table-card-3d">
+          <table class="tech-table">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Procedimento</th>
+                <th>Especialidade</th>
+                <th>Duração Média</th>
+                <th>Valor Referência</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-family:var(--font-mono); color:var(--color-primary-intense);">PRC-001</td>
+                <td><strong>Lente de Contato em Porcelana (Elemento)</strong></td>
+                <td>Estética Dental</td>
+                <td>90 min</td>
+                <td style="color:#25D366; font-weight:700;">R$ 1.800,00</td>
+                <td><span class="status-badge confirmed">Ativo</span></td>
+              </tr>
+              <tr>
+                <td style="font-family:var(--font-mono); color:var(--color-primary-intense);">PRC-002</td>
+                <td><strong>Toxina Botulínica Facial Completa</strong></td>
+                <td>Harmonização</td>
+                <td>45 min</td>
+                <td style="color:#25D366; font-weight:700;">R$ 1.650,00</td>
+                <td><span class="status-badge confirmed">Ativo</span></td>
+              </tr>
+              <tr>
+                <td style="font-family:var(--font-mono); color:var(--color-primary-intense);">PRC-003</td>
+                <td><strong>Alinhadores Invisíveis (Tratamento Completo)</strong></td>
+                <td>Ortodontia</td>
+                <td>12 meses</td>
+                <td style="color:#25D366; font-weight:700;">R$ 8.900,00</td>
+                <td><span class="status-badge confirmed">Ativo</span></td>
+              </tr>
+              <tr>
+                <td style="font-family:var(--font-mono); color:var(--color-primary-intense);">PRC-004</td>
+                <td><strong>Implante Unitário Guiado + Coroa</strong></td>
+                <td>Implantodontia</td>
+                <td>60 min</td>
+                <td style="color:#25D366; font-weight:700;">R$ 3.400,00</td>
+                <td><span class="status-badge confirmed">Ativo</span></td>
+              </tr>
+              <tr>
+                <td style="font-family:var(--font-mono); color:var(--color-primary-intense);">PRC-005</td>
+                <td><strong>Clareamento a Laser LED em Consultório</strong></td>
+                <td>Estética Dental</td>
+                <td>60 min</td>
+                <td style="color:#25D366; font-weight:700;">R$ 950,00</td>
+                <td><span class="status-badge confirmed">Ativo</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           MÓDULO 7: GESTÃO FINANCEIRA
+           ==================================================================== -->
+      <section class="module-container" id="module-financeiro">
+        <div class="module-header">
+          <div class="module-title">
+            <h2>Gestão Financeira & Fluxo de Caixa</h2>
+            <p>Controle de entradas, formas de recebimento e orçamentos da clínica</p>
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card-3d">
+            <div class="kpi-value" style="color:#25D366;">R$ 148.650</div>
+            <div class="kpi-label">Receita Bruta Acumulada no Mês</div>
+          </div>
+          <div class="kpi-card-3d">
+            <div class="kpi-value" style="color:#FF1744;">R$ 41.200</div>
+            <div class="kpi-label">Despesas Operacionais & Protéticos</div>
+          </div>
+          <div class="kpi-card-3d">
+            <div class="kpi-value">R$ 107.450</div>
+            <div class="kpi-label">Lucro Líquido Operacional (72.3%)</div>
+          </div>
+          <div class="kpi-card-3d">
+            <div class="kpi-value">R$ 2.450</div>
+            <div class="kpi-label">Ticket Médio por Procedimento</div>
+          </div>
+        </div>
+
+        <div class="card-3d" style="padding:28px;">
+          <h4 style="font-size:1.1rem; color:#FFF; margin-bottom:16px;">
+            Distribuição por Modalidade de Pagamento
+          </h4>
+          <div style="display:flex; gap:20px; flex-wrap:wrap;">
+            <div style="flex:1; min-width:200px; padding:16px; background:rgba(11,11,15,0.7); border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
+              <div style="color:#25D366; font-weight:700;">PIX / Transferência Instantânea</div>
+              <div style="font-size:1.4rem; font-weight:800; color:#FFF; margin:6px 0;">54%</div>
+              <div style="font-size:0.75rem; color:var(--color-gray-muted);">R$ 80.270,00 recebidos</div>
+            </div>
+            <div style="flex:1; min-width:200px; padding:16px; background:rgba(11,11,15,0.7); border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
+              <div style="color:#00E5FF; font-weight:700;">Cartão de Crédito (até 12x)</div>
+              <div style="font-size:1.4rem; font-weight:800; color:#FFF; margin:6px 0;">38%</div>
+              <div style="font-size:0.75rem; color:var(--color-gray-muted);">R$ 56.480,00 processados</div>
+            </div>
+            <div style="flex:1; min-width:200px; padding:16px; background:rgba(11,11,15,0.7); border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
+              <div style="color:#FFB300; font-weight:700;">Boleto / Convênios Parceiros</div>
+              <div style="font-size:1.4rem; font-weight:800; color:#FFF; margin:6px 0;">8%</div>
+              <div style="font-size:0.75rem; color:var(--color-gray-muted);">R$ 11.900,00 faturados</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           MÓDULO 8: RELATÓRIOS & BI
+           ==================================================================== -->
+      <section class="module-container" id="module-relatorios">
+        <div class="module-header">
+          <div class="module-title">
+            <h2>Relatórios de Performance & Indicadores Clínicos</h2>
+            <p>Métricas de conversão de novos pacientes e índice de satisfação</p>
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card-3d">
+            <div class="kpi-value">78.5%</div>
+            <div class="kpi-label">Taxa de Conversão de Avaliações em Tratamento</div>
+          </div>
+          <div class="kpi-card-3d">
+            <div class="kpi-value">91.2%</div>
+            <div class="kpi-label">Índice de Retorno Preventivo Semestral</div>
+          </div>
+          <div class="kpi-card-3d">
+            <div class="kpi-value">99.4%</div>
+            <div class="kpi-label">NPS (Net Promoter Score) de Pacientes</div>
+          </div>
+          <div class="kpi-card-3d">
+            <div class="kpi-value">4.2 min</div>
+            <div class="kpi-label">Tempo Médio de Espera na Recepção</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           MÓDULO 9: CONFIGURAÇÕES DA CLÍNICA
+           ==================================================================== -->
+      <section class="module-container" id="module-configuracoes">
+        <div class="module-header">
+          <div class="module-title">
+            <h2>Configurações do Sistema & Parâmetros da Clínica</h2>
+            <p>Dados empresariais, horários de expediente e integrações</p>
+          </div>
+        </div>
+
+        <div class="card-3d" style="padding:32px; max-width:800px;">
+          <h3 style="font-size:1.2rem; color:#FFF; margin-bottom:20px;">Informações Cadastrais da Unidade</h3>
+          
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:20px;">
+            <div class="form-group">
+              <label class="form-label">Nome Comercial</label>
+              <input type="text" class="form-control" value="Inova Odonto" readonly>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Razão Social</label>
+              <input type="text" class="form-control" value="Consultório Dra. Dayana Alves de Queiroga LTDA." readonly>
+            </div>
+            <div class="form-group">
+              <label class="form-label">CNPJ</label>
+              <input type="text" class="form-control" value="51.318.423/0001-95" readonly>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Responsável Técnica</label>
+              <input type="text" class="form-control" value="Dra. Dayana Alves de Queiroga (CRO-PB 6842)" readonly>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Endereço da Unidade</label>
+            <input type="text" class="form-control" value="Rua Sargento Edésio de Carvalho, 33 — Sala A — Centro — Sousa/PB (CEP: 58800-330)" readonly>
+          </div>
+
+          <div style="display:flex; justify-content:flex-end; margin-top:24px;">
+            <button class="btn btn-primary" onclick="showToast('Parâmetros salvos com sucesso no servidor!', 'success')">
+              <i class="fas fa-check"></i>
+              <span>Salvar Parâmetros</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       MODAL DE CADASTRO RÁPIDO DE NOVO PACIENTE
+       ========================================================================== -->
+  <div class="modal-backdrop" id="modal-add-patient">
+    <div class="modal-box" style="max-width: 620px;">
+      <button class="modal-close" id="close-add-patient" aria-label="Fechar">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div style="margin-bottom: 24px;">
+        <div class="eyebrow-badge" style="margin-bottom: 8px;">
+          <i class="fas fa-user-plus"></i>
+          CADASTRO CLÍNICO
+        </div>
+        <h3 style="font-size: 1.4rem;">Cadastrar Novo Paciente</h3>
+      </div>
+
+      <form id="form-add-patient">
+        <div class="form-group">
+          <label class="form-label">Nome Completo do Paciente *</label>
+          <input type="text" id="new-patient-name" class="form-control" placeholder="Ex: Lucas Gabriel Silveira" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label">CPF *</label>
+            <input type="text" class="form-control" placeholder="000.000.000-00" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">WhatsApp *</label>
+            <input type="tel" class="form-control" placeholder="(83) 99999-9999" required>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label">Data de Nascimento</label>
+            <input type="date" class="form-control" style="background:#15151D;">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Dentista Preferencial</label>
+            <select class="form-control" style="background:#15151D;">
+              <option>Dra. Dayana Queiroga (Harmonização/Estética)</option>
+              <option>Dr. Lucas Queiroga (Ortodontia)</option>
+              <option>Dra. Camilla Silveira (Endodontia)</option>
+              <option>Dr. Rafael Dantas (Implantes)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Alergias ou Alertas Médicos</label>
+          <input type="text" class="form-control" placeholder="Ex: Alergia a Penicilina, Hipertenso, etc.">
+        </div>
+
+        <div style="display: flex; gap: 14px; margin-top: 10px;">
+          <button type="button" class="btn btn-secondary" onclick="document.getElementById('modal-add-patient').classList.remove('active');" style="flex:1;">
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-primary" style="flex:2;">
+            <i class="fas fa-save"></i>
+            <span>Salvar e Abrir Prontuário</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Scripts do Dashboard -->
+  <script src="../js/main.js"></script>
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>

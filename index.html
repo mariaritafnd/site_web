@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inova Odonto — Odontologia Digital & Estética Avançada | Sousa - PB</title>
+  <meta name="description" content="Inova Odonto em Sousa - PB. Odontologia de alta precisão, escaneamento intraoral 3D, harmonização orofacial e estética dental com Dra. Dayana Alves de Queiroga.">
+  
+  <!-- Favicon com dente estilizado -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦷</text></svg>">
+
+  <!-- Font Awesome 6.5 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- CSS Global & Estética 3D -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       SITE HEADER GLOBAL
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="container header-container">
+      
+      <!-- Logo Inova Odonto -->
+      <a href="index.html" class="brand-logo" aria-label="Inova Odonto - Página Inicial">
+        <div class="brand-icon">
+          <i class="fas fa-tooth"></i>
+        </div>
+        <div class="brand-text">
+          <div class="brand-name">INOVA <span>ODONTO</span></div>
+          <div class="brand-tagline">Clínica Digital • Sousa/PB</div>
+        </div>
+      </a>
+
+      <!-- Menu Principal -->
+      <nav class="nav-menu" id="primary-nav">
+        <a href="index.html" class="nav-link active">Início</a>
+        <a href="pages/sobre.html" class="nav-link">Sobre a Clínica</a>
+        <a href="pages/servicos.html" class="nav-link">Serviços</a>
+        <a href="pages/equipe.html" class="nav-link">Nossa Equipe</a>
+        <a href="pages/contato.html" class="nav-link">Contato</a>
+      </nav>
+
+      <!-- Ações do Header -->
+      <div class="header-actions">
+        <!-- Controle de Som Sci-Fi -->
+        <button class="sound-toggle-btn" style="width:40px; height:40px; border-radius:var(--radius-md); background:rgba(37,37,48,0.6); border:1px solid var(--border-subtle); display:flex; align-items:center; justify-content:center; cursor:pointer;" aria-label="Alternar som"></button>
+
+        <!-- Botão Portal Clínico / Sistema SaaS -->
+        <a href="pages/dashboard.html" class="btn btn-portal" title="Acessar Sistema de Gestão Odontológica">
+          <i class="fas fa-chart-line"></i>
+          <span>Painel Clínico</span>
+          <span class="badge-version">SaaS v2.4</span>
+        </a>
+
+        <!-- Botão WhatsApp Direto -->
+        <a href="https://wa.me/558399011969?text=Ol%C3%A1%2C%20Inova%20Odonto!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+          <span>Agendar no WhatsApp</span>
+        </a>
+
+        <!-- Mobile Toggle -->
+        <button class="mobile-toggle" aria-label="Alternar menu de navegação">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION 3D FUTURISTA
+         ========================================================================== -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        
+        <div class="hero-content">
+          <div class="eyebrow-badge">
+            <i class="fas fa-circle"></i>
+            INOVA ODONTO • ALTA PRECISÃO & ESTÉTICA DIGITAL
+          </div>
+
+          <h1 class="hero-title">
+            A Odontologia do <span class="text-gradient-red">Futuro</span> com o Cuidado que Você Merece.
+          </h1>
+
+          <p class="hero-subtitle">
+            Tecnologia digital de ponta, escaneamento intraoral 3D e procedimentos indolores no coração de Sousa - PB. A arte e a precisão científica unidas para transformar seu sorriso.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="https://wa.me/558399011969?text=Ol%C3%A1%2C%20Inova%20Odonto!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20inicial." target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              <i class="fab fa-whatsapp"></i>
+              <span>Agendar Avaliação</span>
+            </a>
+
+            <a href="pages/servicos.html" class="btn btn-secondary">
+              <i class="fas fa-cube"></i>
+              <span>Conhecer Procedimentos</span>
+            </a>
+
+            <button class="btn btn-secondary" data-open-modal="appointment" data-procedure="Avaliação Geral">
+              <i class="fas fa-calendar-check"></i>
+              <span>Agendamento Rápido</span>
+            </button>
+          </div>
+
+          <div class="hero-trust-indicators">
+            <div class="trust-item">
+              <div class="trust-icon"><i class="fas fa-user-md"></i></div>
+              <div class="trust-text">
+                <span class="trust-title">Dra. Dayana Queiroga</span>
+                <span class="trust-desc">Responsável Técnica • CRO-PB 6842</span>
+              </div>
+            </div>
+
+            <div class="trust-item">
+              <div class="trust-icon"><i class="fas fa-microchip"></i></div>
+              <div class="trust-text">
+                <span class="trust-title">Fluxo 100% Digital</span>
+                <span class="trust-desc">Escaneamento 3D sem moldagens</span>
+              </div>
+            </div>
+
+            <div class="trust-item">
+              <div class="trust-icon"><i class="fas fa-shield-alt"></i></div>
+              <div class="trust-text">
+                <span class="trust-title">Biossegurança</span>
+                <span class="trust-desc">Padrão hospitalar rigoroso</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D Visual Stage do Hero -->
+        <div class="hero-stage-3d">
+          <div id="canvas-3d-hero"></div>
+
+          <!-- Micro-Widget Flutuante 1 -->
+          <div class="floating-widget widget-1">
+            <div class="widget-icon"><i class="fas fa-star"></i></div>
+            <div class="widget-data">
+              <h4>99.4% Satisfação</h4>
+              <p>Pacientes de Sousa e Região</p>
+            </div>
+          </div>
+
+          <!-- Holograma Central 3D -->
+          <div class="hologram-card-center">
+            <div class="hologram-scanner">
+              <div class="scanner-ring ring-1"></div>
+              <div class="scanner-ring ring-2"></div>
+              <div class="scanner-line"></div>
+              <svg class="hologram-tooth-svg" viewBox="0 0 24 24" fill="none" stroke="#FF1744" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2C8.5 2 6 4.5 6 8c0 4 2 7 2 12 0 1.5 1 2 2 2s1.5-1 2-3c.5 2 1 3 2 3s2-.5 2-2c0-5 2-8 2-12 0-3.5-2.5-6-6-6z"/>
+                <path d="M9 8c.5-1.5 2-2 3-2s2.5.5 3 2" stroke="#FFF" stroke-width="1"/>
+              </svg>
+            </div>
+            <span class="hologram-label">SCANNER INTRAORAL 3D</span>
+            <span class="hologram-status">Diagnóstico Ativo</span>
+          </div>
+
+          <!-- Micro-Widget Flutuante 2 -->
+          <div class="floating-widget widget-2">
+            <div class="widget-icon"><i class="fas fa-clock"></i></div>
+            <div class="widget-data">
+              <h4>Horários Flexíveis</h4>
+              <p>Atendimento com Hora Marcada</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         METRICS BAR / INDICADORES CLÍNICOS (CONTADORES ANIMADOS)
+         ========================================================================== -->
+    <section class="metrics-section">
+      <div class="container">
+        <div class="metrics-grid">
+          
+          <div class="metric-card-3d">
+            <div class="metric-value">
+              <span class="metric-plus">+</span><span class="metric-number" data-target="2850">0</span>
+            </div>
+            <div class="metric-label">Pacientes Atendidos com Excelência</div>
+          </div>
+
+          <div class="metric-card-3d">
+            <div class="metric-value">
+              <span class="metric-number" data-target="98" data-suffix="%">0</span>
+            </div>
+            <div class="metric-label">Precisão em Planejamento Digital 3D</div>
+          </div>
+
+          <div class="metric-card-3d">
+            <div class="metric-value">
+              <span class="metric-plus">+</span><span class="metric-number" data-target="4500">0</span>
+            </div>
+            <div class="metric-label">Procedimentos Odontológicos e Estéticos</div>
+          </div>
+
+          <div class="metric-card-3d">
+            <div class="metric-value">
+              <span class="metric-number" data-target="100" data-suffix="%">0</span>
+            </div>
+            <div class="metric-label">Foco em Conforto e Tecnologia Indolor</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         APRESENTAÇÃO DA CLÍNICA & HISTÓRIA (SOBRE RÁPIDO)
+         ========================================================================== -->
+    <section class="section">
+      <div class="container">
+        <div class="glass-panel" style="padding: 50px 40px;">
+          <div class="location-grid">
+            
+            <div>
+              <div class="eyebrow-badge">
+                <i class="fas fa-building"></i>
+                SOBRE A INOVA ODONTO
+              </div>
+              <h2 style="font-size: 2.3rem; margin-bottom: 20px;">
+                Inovação, Ciência e Dedicação no Coração de <span class="text-gradient-red">Sousa - PB</span>
+              </h2>
+              <p style="color: var(--color-gray-light); margin-bottom: 18px; line-height: 1.7;">
+                Fundada em <strong>06 de julho de 2023</strong> pela <strong>Dra. Dayana Alves de Queiroga</strong>, a Inova Odonto nasceu com a missão de transformar a experiência odontológica no Sertão Paraibano, aliando equipamentos de ponta, ambiente acolhedor e atendimento verdadeiramente humanizado.
+              </p>
+              <p style="color: var(--color-gray-light); margin-bottom: 28px; line-height: 1.7;">
+                Aqui, cada detalhe é planejado digitalmente: desde a simulação tridimensional do seu novo sorriso até tratamentos estéticos e cirúrgicos minimamente invasivos, sem dor e com recuperação acelerada.
+              </p>
+
+              <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                <a href="pages/sobre.html" class="btn btn-secondary">
+                  <i class="fas fa-book-open"></i>
+                  <span>Conhecer Nossa História</span>
+                </a>
+                <a href="pages/contato.html" class="btn btn-primary">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Como Chegar à Clínica</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Card Visual de Infraestrutura -->
+            <div class="card-3d" style="background: rgba(15, 15, 22, 0.9); border: 1px solid var(--border-red); padding: 36px;">
+              <h3 style="font-size: 1.3rem; margin-bottom: 20px; display:flex; align-items:center; gap:10px;">
+                <i class="fas fa-check-double text-gradient-red"></i>
+                Diferenciais Tecnológicos
+              </h3>
+
+              <div style="display: flex; flex-direction: column; gap: 18px;">
+                <div style="display: flex; gap: 14px; align-items: flex-start;">
+                  <div style="color: var(--color-primary-intense); font-size: 1.2rem; margin-top: 2px;"><i class="fas fa-vr-cardboard"></i></div>
+                  <div>
+                    <h4 style="font-size: 1rem; color: #FFF;">Escaneamento Óptico 3D</h4>
+                    <p style="font-size: 0.85rem; color: var(--color-gray-muted);">Captura digital precisa da arcada dentária, eliminando massas de moldagem desconfortáveis.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; gap: 14px; align-items: flex-start;">
+                  <div style="color: var(--color-primary-intense); font-size: 1.2rem; margin-top: 2px;"><i class="fas fa-syringe"></i></div>
+                  <div>
+                    <h4 style="font-size: 1rem; color: #FFF;">Anestesia Digital Computadorizada</h4>
+                    <p style="font-size: 0.85rem; color: var(--color-gray-muted);">Fluxo controlado por software que reduz drasticamente a sensibilidade durante a aplicação.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; gap: 14px; align-items: flex-start;">
+                  <div style="color: var(--color-primary-intense); font-size: 1.2rem; margin-top: 2px;"><i class="fas fa-gem"></i></div>
+                  <div>
+                    <h4 style="font-size: 1rem; color: #FFF;">Harmonização & Visagismo Dental</h4>
+                    <p style="font-size: 0.85rem; color: var(--color-gray-muted);">Integração facial e proporção áurea com toxina botulínica e bioestimuladores de colágeno.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         DESTAQUE DOS SERVIÇOS ODONTOLÓGICOS (CARDS 3D)
+         ========================================================================== -->
+    <section class="section" id="servicos-destaque">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow-badge">
+            <i class="fas fa-sparkles"></i>
+            TRATAMENTOS AVANÇADOS
+          </div>
+          <h2 class="section-title">
+            Procedimentos Odontológicos de <span class="text-gradient-red">Alta Precisão</span>
+          </h2>
+          <p class="section-subtitle">
+            Conheça os tratamentos de vanguarda que combinam ciência médica, estética moderna e tecnologia 3D para restaurar a saúde e a confiança do seu sorriso.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          
+          <!-- Card 1: Lentes de Contato Dental -->
+          <div class="card-3d service-card">
+            <div>
+              <div class="service-card-top">
+                <div class="service-icon-box"><i class="fas fa-gem"></i></div>
+                <span class="service-category-tag">Estética Dental</span>
+              </div>
+              <h3 class="service-title">Lentes de Contato em Porcelana</h3>
+              <p class="service-desc">
+                Lâminas ultra-finas de cerâmica projetadas digitalmente para corrigir cor, formato, espaçamentos e textura do sorriso com durabilidade extrema.
+              </p>
+              <ul class="service-features-list">
+                <li><i class="fas fa-check"></i> Planejamento digital do sorriso (DSD)</li>
+                <li><i class="fas fa-check"></i> Desgaste dental minimamente invasivo</li>
+                <li><i class="fas fa-check"></i> Resistência a manchas e amarelamento</li>
+              </ul>
+            </div>
+            <div class="service-card-footer">
+              <a href="pages/servicos.html" class="service-link">
+                <span>Ver Detalhes</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.8rem;" data-open-modal="appointment" data-procedure="Lentes de Contato Dental">
+                Consultar
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2: Harmonização Orofacial -->
+          <div class="card-3d service-card">
+            <div>
+              <div class="service-card-top">
+                <div class="service-icon-box"><i class="fas fa-magic"></i></div>
+                <span class="service-category-tag">Harmonização</span>
+              </div>
+              <h3 class="service-title">Harmonização Orofacial Avançada</h3>
+              <p class="service-desc">
+                Tratamentos estéticos funcionais que equilibram os traços do rosto e o sorriso com toxina botulínica, preenchedores e estimuladores de colágeno.
+              </p>
+              <ul class="service-features-list">
+                <li><i class="fas fa-check"></i> Protocolo personalizado por Dra. Dayana</li>
+                <li><i class="fas fa-check"></i> Melhora de linhas de expressão e contorno</li>
+                <li><i class="fas fa-check"></i> Aplicação sutil, segura e sem exageros</li>
+              </ul>
+            </div>
+            <div class="service-card-footer">
+              <a href="pages/servicos.html" class="service-link">
+                <span>Ver Detalhes</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.8rem;" data-open-modal="appointment" data-procedure="Harmonização Orofacial">
+                Consultar
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3: Alinhadores Invisíveis -->
+          <div class="card-3d service-card">
+            <div>
+              <div class="service-card-top">
+                <div class="service-icon-box"><i class="fas fa-teeth-open"></i></div>
+                <span class="service-category-tag">Ortodontia Digital</span>
+              </div>
+              <h3 class="service-title">Alinhadores Transparentes Digitais</h3>
+              <p class="service-desc">
+                O método ortodôntico contemporâneo: placas invisíveis removíveis que alinham seus dentes com conforto superior, sem braquetes metálicos.
+              </p>
+              <ul class="service-features-list">
+                <li><i class="fas fa-check"></i> Escaneamento e visualização 3D do resultado</li>
+                <li><i class="fas fa-check"></i> Removível para comer e higienizar</li>
+                <li><i class="fas fa-check"></i> Tratamento até 40% mais ágil</li>
+              </ul>
+            </div>
+            <div class="service-card-footer">
+              <a href="pages/servicos.html" class="service-link">
+                <span>Ver Detalhes</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.8rem;" data-open-modal="appointment" data-procedure="Alinhadores Invisíveis">
+                Consultar
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 4: Implantes Guiados -->
+          <div class="card-3d service-card">
+            <div>
+              <div class="service-card-top">
+                <div class="service-icon-box"><i class="fas fa-shield-virus"></i></div>
+                <span class="service-category-tag">Implantodontia</span>
+              </div>
+              <h3 class="service-title">Implantes Dentários Guiados</h3>
+              <p class="service-desc">
+                Reabilitação oral definitiva com planejamento cirúrgico computadorizado, proporcionando fixação milimétrica, sem cortes extensos e sem pontos.
+              </p>
+              <ul class="service-features-list">
+                <li><i class="fas fa-check"></i> Cirurgia guiada por guia cirúrgico 3D</li>
+                <li><i class="fas fa-check"></i> Possibilidade de carga imediata</li>
+                <li><i class="fas fa-check"></i> Pós-operatório rápido e indolor</li>
+              </ul>
+            </div>
+            <div class="service-card-footer">
+              <a href="pages/servicos.html" class="service-link">
+                <span>Ver Detalhes</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.8rem;" data-open-modal="appointment" data-procedure="Implantes Dentários">
+                Consultar
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 5: Clareamento a Laser -->
+          <div class="card-3d service-card">
+            <div>
+              <div class="service-card-top">
+                <div class="service-icon-box"><i class="fas fa-sun"></i></div>
+                <span class="service-category-tag">Estética Dental</span>
+              </div>
+              <h3 class="service-title">Clareamento a Laser LED</h3>
+              <p class="service-desc">
+                Tecnologia fotoativada de alta eficiência para clarear os dentes em poucas sessões no consultório, com proteção anti-sensibilidade avançada.
+              </p>
+              <ul class="service-features-list">
+                <li><i class="fas fa-check"></i> Resultados perceptíveis na primeira sessão</li>
+                <li><i class="fas fa-check"></i> Gel com dessensibilizante integrado</li>
+                <li><i class="fas fa-check"></i> Combinação consultório + kit home care</li>
+              </ul>
+            </div>
+            <div class="service-card-footer">
+              <a href="pages/servicos.html" class="service-link">
+                <span>Ver Detalhes</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.8rem;" data-open-modal="appointment" data-procedure="Clareamento a Laser">
+                Consultar
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 6: Endodontia Microscópica -->
+          <div class="card-3d service-card">
+            <div>
+              <div class="service-card-top">
+                <div class="service-icon-box"><i class="fas fa-microscope"></i></div>
+                <span class="service-category-tag">Endodontia</span>
+              </div>
+              <h3 class="service-title">Tratamento de Canal em Sessão Única</h3>
+              <p class="service-desc">
+                Desmistifique o tratamento de canal: com instrumentação rotatória e microscopia digital, o procedimento é seguro, estéril e sem desconforto.
+              </p>
+              <ul class="service-features-list">
+                <li><i class="fas fa-check"></i> Tratamento concluído na maioria das vezes em 1 consulta</li>
+                <li><i class="fas fa-check"></i> Localizador apical eletrônico de precisão</li>
+                <li><i class="fas fa-check"></i> Preservação máxima da raiz dentária</li>
+              </ul>
+            </div>
+            <div class="service-card-footer">
+              <a href="pages/servicos.html" class="service-link">
+                <span>Ver Detalhes</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.8rem;" data-open-modal="appointment" data-procedure="Endodontia / Canal">
+                Consultar
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+          <a href="pages/servicos.html" class="btn btn-primary" style="padding: 16px 36px;">
+            <i class="fas fa-list-ul"></i>
+            <span>Ver Catálogo Completo de Serviços</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         EQUIPE EM DESTAQUE (DRA. DAYANA & CORPO CLÍNICO)
+         ========================================================================== -->
+    <section class="section" style="background: rgba(15, 15, 22, 0.4);">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow-badge">
+            <i class="fas fa-user-md"></i>
+            CORPO CLÍNICO ESPECIALIZADO
+          </div>
+          <h2 class="section-title">
+            Conheça Quem Cuida do <span class="text-gradient-red">Seu Sorriso</span>
+          </h2>
+          <p class="section-subtitle">
+            Profissionais certificados, com formação continuada e dedicados a entregar um atendimento acolhedor e com excelência técnica.
+          </p>
+        </div>
+
+        <div class="team-grid">
+          
+          <!-- Dra. Dayana Alves de Queiroga -->
+          <div class="team-card-3d">
+            <div class="team-img-wrapper">
+              <div class="team-avatar-placeholder">
+                <i class="fas fa-user-doctor"></i>
+              </div>
+              <div class="team-cro-badge">CRO-PB 6842</div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Dra. Dayana Alves de Queiroga</h3>
+              <div class="team-role">Diretora Clínica & Cirurgiã-Dentista</div>
+              <p class="team-bio">
+                Especialista em Harmonização Orofacial e Estética Dental. Responsável societária e fundadora da Inova Odonto em Sousa - PB.
+              </p>
+              <a href="pages/equipe.html" class="btn btn-secondary" style="width: 100%; font-size: 0.85rem;">
+                <i class="fas fa-id-card"></i>
+                <span>Ver Biografia Completa</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Dr. Lucas Medeiros Queiroga -->
+          <div class="team-card-3d">
+            <div class="team-img-wrapper">
+              <div class="team-avatar-placeholder">
+                <i class="fas fa-user-tie"></i>
+              </div>
+              <div class="team-cro-badge">CRO-PB 7215</div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Dr. Lucas Medeiros Queiroga</h3>
+              <div class="team-role">Ortodontista & Alinhadores Invisíveis</div>
+              <p class="team-bio">
+                Especialista em Ortodontia Digital e Oclusão Funcional, com foco no planejamento 3D de sorrisos perfeitos.
+              </p>
+              <a href="pages/equipe.html" class="btn btn-secondary" style="width: 100%; font-size: 0.85rem;">
+                <i class="fas fa-id-card"></i>
+                <span>Ver Biografia Completa</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Dra. Camilla Fernandes Silveira -->
+          <div class="team-card-3d">
+            <div class="team-img-wrapper">
+              <div class="team-avatar-placeholder">
+                <i class="fas fa-stethoscope"></i>
+              </div>
+              <div class="team-cro-badge">CRO-PB 7590</div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Dra. Camilla Fernandes Silveira</h3>
+              <div class="team-role">Endodontia Microscópica & Reabilitação</div>
+              <p class="team-bio">
+                Mestre em Endodontia e tratamentos em sessão única. Especialista no manejo do conforto e controle total da dor.
+              </p>
+              <a href="pages/equipe.html" class="btn btn-secondary" style="width: 100%; font-size: 0.85rem;">
+                <i class="fas fa-id-card"></i>
+                <span>Ver Biografia Completa</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Dr. Rafael Gadelha Dantas -->
+          <div class="team-card-3d">
+            <div class="team-img-wrapper">
+              <div class="team-avatar-placeholder">
+                <i class="fas fa-tooth"></i>
+              </div>
+              <div class="team-cro-badge">CRO-PB 8041</div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Dr. Rafael Gadelha Dantas</h3>
+              <div class="team-role">Cirurgião Bucomaxilofacial & Implantes</div>
+              <p class="team-bio">
+                Pioneiro em cirurgia guiada por computador, enxertos ósseos e reabilitação sobre implantes com prótese protocolo.
+              </p>
+              <a href="pages/equipe.html" class="btn btn-secondary" style="width: 100%; font-size: 0.85rem;">
+                <i class="fas fa-id-card"></i>
+                <span>Ver Biografia Completa</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         TRANSFORMAÇÃO REAL • COMPARADOR ANTES E DEPOIS 3D
+         ========================================================================== -->
+    <section class="section" style="padding-top: 40px; padding-bottom: 60px;">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow-badge">
+            <i class="fas fa-magic"></i>
+            TRANSFORMAÇÃO ESTÉTICA
+          </div>
+          <h2 class="section-title">
+            Comparador Interativo <span class="text-gradient-red">Antes & Depois</span>
+          </h2>
+          <p class="section-subtitle">
+            Arraste o cursor central para visualizar a transformação obtida com Lentes de Contato em Porcelana e Clareamento a Laser LED.
+          </p>
+        </div>
+
+        <div class="before-after-card">
+          <div class="before-after-wrapper">
+            <div class="ba-image ba-before">
+              <span class="ba-badge before">ANTES</span>
+            </div>
+            <div class="ba-image ba-after">
+              <span class="ba-badge after">DEPOIS • INOVA ODONTO</span>
+            </div>
+            <div class="ba-handle-line"></div>
+            <div class="ba-handle-thumb"><i class="fas fa-arrows-alt-h"></i></div>
+            <input type="range" class="ba-slider-range" min="0" max="100" value="50" aria-label="Controle deslizante antes e depois">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         LOCALIZAÇÃO EM SOUSA - PB & CONTATO RÁPIDO
+         ========================================================================== -->
+    <section class="section">
+      <div class="container">
+        <div class="location-grid">
+          
+          <div class="card-3d location-info-card">
+            <div class="eyebrow-badge">
+              <i class="fas fa-map-marked-alt"></i>
+              ONDE ESTAMOS
+            </div>
+            <h2 style="font-size: 2.1rem; margin-bottom: 16px;">
+              Facilidade de Acesso no <span class="text-gradient-red">Centro de Sousa</span>
+            </h2>
+            <p style="color: var(--color-gray-light); line-height: 1.6;">
+              Localizada estrategicamente no centro comercial de Sousa - PB, a Inova Odonto dispõe de estacionamento facilitado, acessibilidade total e salas climatizadas para o seu bem-estar.
+            </p>
+
+            <div class="location-detail-list">
+              <div class="location-detail-item">
+                <div class="location-icon-box"><i class="fas fa-location-dot"></i></div>
+                <div class="location-detail-content">
+                  <h4>Endereço da Clínica</h4>
+                  <p>Rua Sargento Edésio de Carvalho, 33 — Sala A — Centro<br>Sousa / PB — CEP: 58800-330</p>
+                </div>
+              </div>
+
+              <div class="location-detail-item">
+                <div class="location-icon-box"><i class="fab fa-whatsapp"></i></div>
+                <div class="location-detail-content">
+                  <h4>Atendimento WhatsApp</h4>
+                  <p>(83) 99901-1969 • Respostas em tempo hábil</p>
+                </div>
+              </div>
+
+              <div class="location-detail-item">
+                <div class="location-icon-box"><i class="fas fa-phone"></i></div>
+                <div class="location-detail-content">
+                  <h4>Telefone Empresarial</h4>
+                  <p>(83) 99620-8352 • Agendamentos e informações</p>
+                </div>
+              </div>
+
+              <div class="location-detail-item">
+                <div class="location-icon-box"><i class="fas fa-clock"></i></div>
+                <div class="location-detail-content">
+                  <h4>Horário de Funcionamento</h4>
+                  <p>Segunda a Sexta: 08:00 às 18:30 | Sábado: 08:00 às 12:30</p>
+                </div>
+              </div>
+            </div>
+
+            <a href="https://www.google.com/maps/search/?api=1&query=Inova+Odonto+Sousa+PB" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%;">
+              <i class="fas fa-directions"></i>
+              <span>Abrir Rota no Google Maps</span>
+            </a>
+          </div>
+
+          <!-- Mapa Integrado do Google Maps -->
+          <div class="map-wrapper">
+            <iframe 
+              src="https://maps.google.com/maps?q=Rua%20Sargento%20Ed%C3%A9sio%20de%20Carvalho,%2033,%20Sousa%20PB&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+              title="Mapa de Localização - Inova Odonto Sousa PB" 
+              loading="lazy">
+            </iframe>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CTA BANNER FINAL FUTURISTA
+         ========================================================================== -->
+    <section class="cta-banner-section">
+      <div class="container">
+        <div class="cta-banner-card">
+          <div class="eyebrow-badge">
+            <i class="fas fa-heartbeat"></i>
+            RESERVE SEU HORÁRIO
+          </div>
+          <h2 class="cta-banner-title">
+            Pronto para Viver a <span class="text-gradient">Odontologia do Futuro?</span>
+          </h2>
+          <p class="cta-banner-desc">
+            Dê o primeiro passo para o sorriso que você sempre sonhou. Agende sua consulta diretamente pelo WhatsApp e conheça o atendimento humanizado da Inova Odonto.
+          </p>
+
+          <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <a href="https://wa.me/558399011969?text=Ol%C3%A1%2C%20Inova%20Odonto!%20Desejo%20agendar%20um%20hor%C3%A1rio%20pelo%20WhatsApp." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="padding: 16px 36px; font-size: 1.05rem;">
+              <i class="fab fa-whatsapp"></i>
+              <span>Fale Conosco pelo WhatsApp</span>
+            </a>
+
+            <button class="btn btn-secondary" style="padding: 16px 32px;" data-open-modal="appointment" data-procedure="Avaliação Personalizada">
+              <i class="fas fa-calendar-alt"></i>
+              <span>Solicitar Formulário Rápido</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       SITE FOOTER GLOBAL
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Coluna 1: Marca & Registro -->
+        <div>
+          <a href="index.html" class="brand-logo" style="margin-bottom: 16px;">
+            <div class="brand-icon"><i class="fas fa-tooth"></i></div>
+            <div class="brand-text">
+              <div class="brand-name">INOVA <span>ODONTO</span></div>
+              <div class="brand-tagline">Sousa • Paraíba</div>
+            </div>
+          </a>
+          <p class="footer-col-desc">
+            Consultório Dra. Dayana Alves de Queiroga LTDA.<br>
+            CNPJ: 51.318.423/0001-95 • Responsável Técnica: Dra. Dayana Alves de Queiroga (CRO-PB 6842).
+          </p>
+          <div class="footer-status-pill">
+            <span class="status-dot"></span>
+            <span>Clínica Aberta Hoje • Sousa/PB</span>
+          </div>
+        </div>
+
+        <!-- Coluna 2: Navegação -->
+        <div>
+          <h4 class="footer-heading">Navegação</h4>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i> Início</a></li>
+            <li><a href="pages/sobre.html"><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i> Sobre a Clínica</a></li>
+            <li><a href="pages/servicos.html"><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i> Tratamentos e Serviços</a></li>
+            <li><a href="pages/equipe.html"><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i> Corpo Clínico</a></li>
+            <li><a href="pages/contato.html"><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i> Contato e Localização</a></li>
+            <li><a href="pages/dashboard.html" style="color: var(--color-primary-intense); font-weight: 700;"><i class="fas fa-laptop-medical"></i> Portal Clínico SaaS</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 3: Tratamentos -->
+        <div>
+          <h4 class="footer-heading">Especialidades</h4>
+          <ul class="footer-links">
+            <li><a href="pages/servicos.html">Harmonização Orofacial</a></li>
+            <li><a href="pages/servicos.html">Lentes de Contato Dental</a></li>
+            <li><a href="pages/servicos.html">Alinhadores Invisíveis</a></li>
+            <li><a href="pages/servicos.html">Implantes Dentários Guiados</a></li>
+            <li><a href="pages/servicos.html">Clareamento a Laser LED</a></li>
+            <li><a href="pages/servicos.html">Endodontia em Sessão Única</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 4: Contato & Social -->
+        <div>
+          <h4 class="footer-heading">Canais Digitais</h4>
+          <div class="footer-contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Rua Sargento Edésio de Carvalho, 33 — Sala A — Centro, Sousa - PB</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fab fa-whatsapp"></i>
+            <span>(83) 99901-1969</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-phone"></i>
+            <span>(83) 99620-8352</span>
+          </div>
+
+          <div class="social-links">
+            <a href="https://www.instagram.com/inovaodonto.sousa/" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram Inova Odonto">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/c/558399011969" target="_blank" rel="noopener noreferrer" class="social-link" title="Catálogo WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Inova+Odonto+Sousa+PB" target="_blank" rel="noopener noreferrer" class="social-link" title="Localização Google">
+              <i class="fas fa-map-pin"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 Inova Odonto — Todos os direitos reservados.
+        </div>
+        <div>
+          Odontologia Digital • Estética Avançada • Sousa/PB
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODAL DE AGENDAMENTO RÁPIDO
+       ========================================================================== -->
+  <div class="modal-backdrop" id="appointment-modal">
+    <div class="modal-box">
+      <button class="modal-close" data-close-modal aria-label="Fechar modal">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div style="text-align: center; margin-bottom: 24px;">
+        <div class="eyebrow-badge" style="margin-bottom: 8px;">
+          <i class="fas fa-calendar-check"></i>
+          AGENDAMENTO INTELIGENTE
+        </div>
+        <h3 style="font-size: 1.45rem;">Solicitar Atendimento na Inova Odonto</h3>
+        <p style="font-size: 0.85rem; color: var(--color-gray-muted);">
+          Preencha os dados abaixo para ser encaminhado diretamente ao WhatsApp da clínica.
+        </p>
+      </div>
+
+      <form id="quick-booking-form">
+        <div class="form-group">
+          <label class="form-label" for="modal-name">Seu Nome Completo *</label>
+          <input type="text" id="modal-name" class="form-control" placeholder="Ex: Maria Queiroga" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="modal-phone">WhatsApp para Contato *</label>
+          <input type="tel" id="modal-phone" class="form-control" placeholder="(83) 99999-9999" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="modal-procedure">Procedimento de Interesse *</label>
+          <select id="modal-procedure" class="form-control" style="background:#15151D;" required>
+            <option value="Avaliação Geral">Avaliação Clínica Geral</option>
+            <option value="Lentes de Contato Dental">Lentes de Contato em Porcelana</option>
+            <option value="Harmonização Orofacial">Harmonização Orofacial</option>
+            <option value="Alinhadores Invisíveis">Alinhadores Transparentes (Ortodontia)</option>
+            <option value="Implantes Dentários">Implantes Dentários Guiados</option>
+            <option value="Clareamento a Laser">Clareamento a Laser LED</option>
+            <option value="Endodontia / Canal">Tratamento de Canal (Endodontia)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="modal-date">Melhor Período para Consulta</label>
+          <select id="modal-date" class="form-control" style="background:#15151D;">
+            <option value="Manhã (08h às 12h)">Manhã (08h às 12h)</option>
+            <option value="Tarde (13h às 18h)">Tarde (13h às 18h)</option>
+            <option value="Sábado">Sábado (08h às 12h)</option>
+            <option value="Primeiro horário vago">Primeiro horário vago disponível</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; margin-top: 10px;">
+          <i class="fab fa-whatsapp"></i>
+          <span>Confirmar e Conversar no WhatsApp</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Three.js CDN para Holograma 3D -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Scripts do Sistema -->
+  <script src="js/main.js"></script>
+  <script src="js/hero-3d.js"></script>
+</body>
+</html>

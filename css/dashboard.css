@@ -1,0 +1,913 @@
+/* ==========================================================================
+   INOVA ODONTO — DASHBOARD & PAINEL CLÍNICO SAAS 3D
+   Módulo de Gestão Odontológica Avançada
+   Paleta: Vermelho (#E50932, #FF1744, #8B001F) & Superfícies Dark Tecnológicas
+   ========================================================================== */
+
+.dashboard-body {
+  background-color: var(--color-bg-dark);
+  color: var(--color-gray-light);
+  min-height: 100vh;
+  display: flex;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   SIDEBAR FUTURISTA RETRÁTIL
+   ========================================================================== */
+
+.app-sidebar {
+  width: 270px;
+  background: rgba(15, 15, 22, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid var(--border-red);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.app-sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar-header {
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.sidebar-brand-icon {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  font-size: 1.2rem;
+  box-shadow: 0 0 15px rgba(229, 9, 50, 0.5);
+}
+
+.sidebar-brand-text {
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  transition: opacity 0.25s ease;
+}
+
+.app-sidebar.collapsed .sidebar-brand-text {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sidebar-brand-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #FFF;
+}
+
+.sidebar-brand-title span {
+  color: var(--color-primary-intense);
+}
+
+.sidebar-brand-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-primary-intense);
+  letter-spacing: 0.1em;
+}
+
+.sidebar-toggle-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  color: var(--color-gray-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.sidebar-toggle-btn:hover {
+  background: var(--color-primary);
+  color: #FFF;
+}
+
+/* Navegação da Sidebar */
+.sidebar-nav {
+  flex: 1;
+  padding: 20px 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nav-section-title {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: var(--color-gray-muted);
+  letter-spacing: 0.12em;
+  padding: 10px 12px 4px;
+  white-space: nowrap;
+}
+
+.app-sidebar.collapsed .nav-section-title {
+  display: none;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  color: var(--color-gray-light);
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.sidebar-item i {
+  font-size: 1.15rem;
+  min-width: 24px;
+  text-align: center;
+  color: var(--color-gray-muted);
+  transition: color 0.25s ease;
+}
+
+.sidebar-item:hover {
+  background: rgba(229, 9, 50, 0.1);
+  color: #FFF;
+}
+
+.sidebar-item:hover i {
+  color: var(--color-primary-intense);
+}
+
+.sidebar-item.active {
+  background: linear-gradient(90deg, rgba(229, 9, 50, 0.22) 0%, rgba(37, 37, 48, 0.4) 100%);
+  color: #FFF;
+  border-left: 3px solid var(--color-primary-intense);
+  box-shadow: 0 4px 15px rgba(229, 9, 50, 0.15);
+}
+
+.sidebar-item.active i {
+  color: var(--color-primary-intense);
+  filter: drop-shadow(0 0 8px rgba(255, 23, 68, 0.7));
+}
+
+.sidebar-badge {
+  margin-left: auto;
+  background: var(--color-primary);
+  color: #FFF;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+}
+
+.app-sidebar.collapsed .sidebar-text,
+.app-sidebar.collapsed .sidebar-badge {
+  display: none;
+}
+
+/* Rodapé da Sidebar */
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid var(--border-subtle);
+  background: rgba(11, 11, 15, 0.5);
+}
+
+.operator-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.operator-avatar {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-primary-intense), var(--color-primary-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #FFF;
+  border: 2px solid var(--color-primary);
+}
+
+.operator-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.operator-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #FFF;
+}
+
+.operator-role {
+  font-size: 0.72rem;
+  color: var(--color-primary-intense);
+}
+
+.app-sidebar.collapsed .operator-info {
+  display: none;
+}
+
+/* ==========================================================================
+   CONTEÚDO PRINCIPAL DO DASHBOARD
+   ========================================================================== */
+
+.app-main {
+  flex: 1;
+  margin-left: 270px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.app-sidebar.collapsed ~ .app-main {
+  margin-left: 80px;
+}
+
+/* Topbar do Sistema */
+.app-topbar {
+  height: 72px;
+  background: rgba(15, 15, 22, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-red);
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.global-search {
+  position: relative;
+  width: 340px;
+}
+
+.global-search input {
+  width: 100%;
+  padding: 10px 16px 10px 40px;
+  background: rgba(21, 21, 29, 0.8);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: #FFF;
+  font-size: 0.88rem;
+  transition: var(--transition-fast);
+}
+
+.global-search input:focus {
+  border-color: var(--color-primary-intense);
+  box-shadow: 0 0 15px rgba(229, 9, 50, 0.3);
+}
+
+.global-search i {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-gray-muted);
+  font-size: 0.9rem;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.clinic-location-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(37, 37, 48, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  color: #FFF;
+}
+
+.clinic-location-badge i {
+  color: var(--color-primary-intense);
+}
+
+.topbar-icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: rgba(37, 37, 48, 0.6);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gray-light);
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition-fast);
+}
+
+.topbar-icon-btn:hover {
+  border-color: var(--color-primary);
+  color: #FFF;
+  background: rgba(229, 9, 50, 0.15);
+}
+
+.topbar-icon-btn .notify-dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary-intense);
+  box-shadow: 0 0 8px var(--color-primary-intense);
+}
+
+/* Área de Módulos Dinâmicos */
+.app-content {
+  padding: 32px;
+  flex: 1;
+}
+
+.module-container {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.module-container.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.module-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.module-title h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.module-title p {
+  font-size: 0.9rem;
+  color: var(--color-gray-muted);
+}
+
+/* ==========================================================================
+   CARDS DE INDICADORES 3D (KPIs)
+   ========================================================================== */
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.kpi-card-3d {
+  background: var(--gradient-card);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(229, 9, 50, 0.22);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: var(--transition-3d);
+}
+
+.kpi-card-3d:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: var(--color-primary-intense);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(229, 9, 50, 0.25);
+}
+
+.kpi-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.kpi-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(229, 9, 50, 0.14);
+  border: 1px solid rgba(229, 9, 50, 0.35);
+  color: var(--color-primary-intense);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  box-shadow: 0 0 15px rgba(229, 9, 50, 0.2);
+}
+
+.kpi-trend {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.kpi-trend.positive {
+  color: #25D366;
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+}
+
+.kpi-value {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #FFF;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.kpi-label {
+  font-size: 0.85rem;
+  color: var(--color-gray-light);
+}
+
+/* ==========================================================================
+   GRÁFICOS & ANALYTICS SECTION
+   ========================================================================== */
+
+.charts-row {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.chart-card-3d {
+  background: var(--gradient-card);
+  border: 1px solid var(--border-red);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.chart-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #FFF;
+}
+
+.chart-container-inner {
+  position: relative;
+  height: 280px;
+  width: 100%;
+}
+
+/* ==========================================================================
+   TABELAS & PRÓXIMAS CONSULTAS
+   ========================================================================== */
+
+.dashboard-tables-row {
+  display: grid;
+  grid-template-columns: 1.6fr 1.1fr;
+  gap: 24px;
+}
+
+.table-card-3d {
+  background: var(--gradient-card);
+  border: 1px solid var(--border-red);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.tech-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.tech-table th {
+  text-align: left;
+  padding: 12px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--color-gray-muted);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.tech-table td {
+  padding: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--color-gray-light);
+}
+
+.tech-table tr:hover td {
+  background: rgba(229, 9, 50, 0.06);
+  color: #FFF;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-badge.confirmed {
+  background: rgba(37, 211, 102, 0.15);
+  color: #25D366;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+}
+
+.status-badge.in-progress {
+  background: rgba(229, 9, 50, 0.15);
+  color: var(--color-primary-intense);
+  border: 1px solid rgba(229, 9, 50, 0.3);
+}
+
+.status-badge.waiting {
+  background: rgba(255, 179, 0, 0.15);
+  color: #FFB300;
+  border: 1px solid rgba(255, 179, 0, 0.3);
+}
+
+/* Feed de Atividades Recentes */
+.activity-feed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.activity-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(229, 9, 50, 0.15);
+  color: var(--color-primary-intense);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.activity-text h5 {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #FFF;
+  margin-bottom: 2px;
+}
+
+.activity-text p {
+  font-size: 0.78rem;
+  color: var(--color-gray-muted);
+}
+
+/* ==========================================================================
+   PRONTUÁRIO & ODONTOGRAMA INTERATIVO 3D
+   ========================================================================== */
+
+.odontogram-section {
+  background: var(--gradient-card);
+  border: 1px solid var(--border-red);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  box-shadow: var(--shadow-3d);
+}
+
+.odontogram-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.condition-selectors {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.condition-btn {
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid var(--border-subtle);
+  background: rgba(37, 37, 48, 0.6);
+  color: var(--color-gray-light);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+}
+
+.condition-btn.active,
+.condition-btn:hover {
+  border-color: var(--color-primary);
+  color: #FFF;
+  background: rgba(229, 9, 50, 0.2);
+}
+
+.condition-btn .color-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.odontogram-arc-container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: center;
+  padding: 20px 0;
+  background: rgba(11, 11, 15, 0.6);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+}
+
+.arc-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-primary-intense);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.teeth-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tooth-box {
+  width: 44px;
+  height: 64px;
+  background: rgba(21, 21, 29, 0.9);
+  border: 1px solid rgba(229, 9, 50, 0.25);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.tooth-box:hover {
+  transform: translateY(-4px) scale(1.08);
+  border-color: var(--color-primary-intense);
+  box-shadow: 0 0 12px rgba(229, 9, 50, 0.4);
+}
+
+.tooth-box.selected {
+  border-color: #FF1744;
+  background: rgba(229, 9, 50, 0.25);
+  box-shadow: 0 0 16px rgba(255, 23, 68, 0.6);
+}
+
+.tooth-num {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-gray-muted);
+}
+
+.tooth-graphic {
+  width: 26px;
+  height: 28px;
+  fill: var(--color-gray-muted);
+  transition: fill 0.2s ease;
+}
+
+.tooth-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+/* Modificadores de estado do dente */
+.tooth-box[data-status="carie"] .tooth-graphic { fill: #E50932; }
+.tooth-box[data-status="lente"] .tooth-graphic { fill: #00E5FF; }
+.tooth-box[data-status="implante"] .tooth-graphic { fill: #FFB300; }
+.tooth-box[data-status="canal"] .tooth-graphic { fill: #9D00FF; }
+.tooth-box[data-status="higido"] .tooth-graphic { fill: #FFFFFF; }
+
+.odontogram-inspector-card {
+  margin-top: 24px;
+  padding: 20px;
+  background: rgba(37, 37, 48, 0.5);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ==========================================================================
+   AGENDA DE CONSULTAS INTERATIVA
+   ========================================================================== */
+
+.calendar-grid-card {
+  background: var(--gradient-card);
+  border: 1px solid var(--border-red);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.calendar-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.calendar-nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.agenda-day-grid {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 12px;
+  background: rgba(11, 11, 15, 0.6);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  border: 1px solid var(--border-subtle);
+}
+
+.time-slot-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-gray-muted);
+  padding: 14px 0;
+  text-align: right;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.time-slot-content {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: center;
+}
+
+.appointment-chip {
+  width: 100%;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, rgba(229, 9, 50, 0.2) 0%, rgba(37, 37, 48, 0.8) 100%);
+  border-left: 4px solid var(--color-primary-intense);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: var(--transition-fast);
+}
+
+.appointment-chip:hover {
+  transform: translateX(4px);
+  box-shadow: 0 6px 18px rgba(229, 9, 50, 0.25);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE DO DASHBOARD
+   ========================================================================== */
+
+.mobile-dashboard-toggle {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .charts-row,
+  .dashboard-tables-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .mobile-dashboard-toggle {
+    display: flex !important;
+  }
+  .app-sidebar {
+    transform: translateX(-100%);
+    width: 260px !important;
+  }
+  .app-sidebar.mobile-open {
+    transform: translateX(0);
+  }
+  .app-main {
+    margin-left: 0 !important;
+  }
+  .app-topbar {
+    padding: 0 16px;
+  }
+  .global-search {
+    width: 200px;
+  }
+  .app-content {
+    padding: 20px 16px;
+  }
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+}
